@@ -1,0 +1,31 @@
+$(do (our page `Media`) (imp defs.ltl))
+
+<!DOCTYPE html>
+<html>
+<head>
+	$(inc metadata.ltl.html)
+</head>
+<body>
+	$(inc header.ltl.html)
+	$(inc nav.ltl.html)
+	<main id="site-main">
+		$(section `88x31 Badges`)
+			$(# `Thanks to me numbering the trinity badges, they can be put on the page using a
+			     simple one-liner. However, if I want to insert a new badge in the middle of the
+			     collection, re-numbering it is gonna be painful... maybe at that point I should
+			     inline all the badges here in the order that I want and drop the file numbering.`)
+			$(each _ file (ls res/badges/trinity) `$(badge `trinity/$(file)`)\n`)
+			<div class="clearfix"></div>
+		$(/section)
+		$(section `Gifs`)
+			<div class="flex">
+				$(contained-img gifs/nicholas-cage-trinity.gif)
+				$(contained-img gifs/trinity-ball.gif)
+				$(contained-img gifs/trinity-based.gif)
+				$(contained-img gifs/trinity-heart-locket.gif)
+			</div>
+		$(/section)
+	</main>
+	$(inc footer.ltl.html)
+</body>
+</html>

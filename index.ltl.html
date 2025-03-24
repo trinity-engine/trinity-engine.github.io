@@ -1,0 +1,88 @@
+$(do (our page Home) (imp defs.ltl))
+
+<!DOCTYPE html>
+<html>
+<head>
+	$(inc metadata.ltl.html)
+</head>
+<body>
+	$(inc header.ltl.html)
+	$(inc nav.ltl.html)
+	<main id="site-main">
+		$(section Introduction)
+			<div class="content">
+				$(note `This project is a work-in-progress.`)
+				<p>
+					<b>Trinity</b> is a retro, $(a `2.5D` `https://en.wikipedia.org/wiki/2.5D`) $(a software-rendered `https://en.wikipedia.org/wiki/Software_rendering`) game engine written in $(a C99 `https://en.wikipedia.org/wiki/C99`)
+					using the $(a SDL2 `https://wiki.libsdl.org/SDL2/FrontPage`) library, with $(a Lua `https://www.lua.org/about.html`)
+					for scripting. It's inspired by engines such as $(a `Valve's Source engine` `https://en.wikipedia.org/wiki/Source_(game_engine)`),
+					the $(a `Doom engine`  https://en.wikipedia.org/wiki/Doom_engine), the $(a `Build engine` `https://en.wikipedia.org/wiki/Build_(game_engine)`),
+					the $(a `Quake engine` https://en.wikipedia.org/wiki/Quake_engine), and $(a Roblox `https://en.wikipedia.org/wiki/Roblox`).
+				</p>
+				$(h2 Goal)
+				<p>
+					The goal is to offer a smooth game development experience with easy game
+					distribution. Trinity will be a single pre-compiled executable - the <b>Trinity engine executable</b> -
+					which can run platform-independent game files.
+				</p>
+				$(h2 `How The Renderer Works`)
+				<p>
+					If you're interested in how Trinity's renderer works and the mathematics behind it, you
+					can read the $(a `Trinity renderer development blogs` `https://lordoftrident.github.io/blogs/trinity-part-1/`).
+				</p>
+			</div>
+		$(/section)
+		$(section `Platform Support`)
+			<div class="content">
+				<p>Trinity aims to support the following platforms:</p>
+				<ul>
+					<li>Windows</li>
+					<li>Linux</li>
+					<li>MacOS</li>
+				</ul>
+				$(note `As of now, Linux is supported and Windows has untested support.`)
+			</div>
+		$(/section)
+		$(section `Current State`)
+			<div class="content">
+				<p>Currently, Trinity has the following features:</p>
+				<ul>
+					<li>Functional game file browser with proper UI</li>
+					<li>Wall filling</li>
+					<li>Sectors</li>
+					<li>Working portals</li>
+				</ul>
+				<div class="flex">
+					$(contained-img screenshot1.png)
+					$(contained-img screenshot2.png)
+					$(contained-img screenshot3.png)
+				</div>
+				$(note `For previous versions of Trinity, see the <a href="/history">Trinity History</a>.`)
+			</div>
+		$(/section)
+		$(section `License`)
+			<div class="content">
+				<p>Trinity is licensed under the $(a `GPL v3 license` `https://www.gnu.org/licenses/gpl-3.0.en.html`).</p>
+				<details>
+					<summary>See full license</summary>
+					$(pre)$(encode (read LICENSE))$(/pre)
+				</details>
+			</div>
+		$(/section)
+		$(section)
+			<iframe class="badge increment" src="//incr.easrng.net/badge?key=trinity-engine" title="Increment Badge" frameborder="0"></iframe>
+			<img title="Visits" class="badge counter" src="http://counter.co.kz/CounterCoKz?page=trinity-engine.github.io&amp;style=default&amp;digits=6" border="0">
+			$(badge ltl.png         https://github.com/lordoftrident/ltl)
+			$(badge gimp.png        https://www.gimp.org/)
+			$(badge micro.png       https://micro-editor.github.io/)
+			$(badge open-source.png https://github.com/lordoftrident)
+			$(# `
+			<br class="gap">
+			<a href="https://info.flagcounter.com/Qug9"><img title="Country Counter" src="https://s01.flagcounter.com/count/Qug9/bg_1B1B27/txt_DBDBDB/border_272733/columns_4/maxflags_12/viewers_3/labels_0/pageviews_1/flags_0/percent_1/" border="0"></a>
+			`)
+			<div class="clearfix"></div>
+		$(/section)
+	</main>
+	$(inc footer.ltl.html)
+</body>
+</html>

@@ -1,0 +1,230 @@
+$(do (our page Docs) (imp defs.ltl))
+
+$(our data-table-header `
+<tr>
+	<td>Name</td>
+	<td>Type</td>
+	<td>Description</td>
+</tr>
+`)
+
+<!DOCTYPE html>
+<html>
+<head>
+	$(inc metadata.ltl.html)
+</head>
+<body>
+	$(inc header.ltl.html)
+	$(inc nav.ltl.html)
+	<main id="site-main">
+		$(section `Table Of Contents`)
+			<div class="content">
+				<ul>
+					<li>
+						$(ha `File Formats`)
+						<ul>
+							<li>
+								$(ha PAL)
+								<ul>
+									<li>$(ha RGB)</li>
+								</ul>
+							</li>
+							<li>$(ha PIF)</li>
+							<li>$(ha TFF)</li>
+						</ul>
+					</li>
+					<li>
+						$(ha Lua)
+						<ul>
+							<li>
+								$(ha Functions)
+								<ul>
+									<li>$(ha T_Print)</li>
+									<li>$(ha T_Info)</li>
+									<li>$(ha T_Sleep)</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		$(/section)
+		$(section `File Formats`)
+			<div class="content">
+				$(note `All data is $(a little-endian `https://en.wikipedia.org/wiki/Endianness`) and data types are represented with $(a `C type syntax` `https://en.wikipedia.org/wiki/C_data_types`).`)
+
+				$(h1 PAL)
+				<ul>
+					<li><b>PAL</b>ette</li>
+					<li>From the $(a `PIF library` `https://github.com/lordoftrident/pif`)</li>
+					<li>File extension: $(quote .pal)</li>
+					<li>Magic bytes: $(quote PIFP)</li>
+				</ul>
+				<table>
+					$(data-table-header)
+					<tr>
+						<td>$(quote magic)</td>
+						<td>$(quote uint8_t[4])</td>
+						<td>Magic bytes</td>
+					</tr>
+					<tr>
+						<td>$(quote last)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Index of the last color in the palette</td>
+					</tr>
+					<tr>
+						<td>$(quote colors)</td>
+						<td>$(quote `RGB[last + 1]`)</td>
+						<td>List of palette colors in RGB format</td>
+					</tr>
+				</table>
+				$(h2 RGB)
+				<table>
+					$(data-table-header)
+					<tr>
+						<td>$(quote r)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Red color component</td>
+					</tr>
+					<tr>
+						<td>$(quote g)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Green color component</td>
+					</tr>
+					<tr>
+						<td>$(quote b)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Blue color component</td>
+					</tr>
+				</table>
+
+				$(h1 PIF)
+				<ul>
+					<li><b>P</b>alettized <b>I</b>mage <b>F</b>ile</li>
+					<li>From the $(a `PIF library` `https://github.com/lordoftrident/pif`)</li>
+					<li>File extension: $(quote .pif)</li>
+					<li>Magic bytes: $(quote PIFI)</li>
+				</ul>
+				<table>
+					$(data-table-header)
+					<tr>
+						<td>$(quote magic)</td>
+						<td>$(quote uint8_t[4])</td>
+						<td>Magic bytes</td>
+					</tr>
+					<tr>
+						<td>$(quote w)</td>
+						<td>$(quote uint16_t)</td>
+						<td>Width of the image</td>
+					</tr>
+					<tr>
+						<td>$(quote h)</td>
+						<td>$(quote uint16_t)</td>
+						<td>Height of the image</td>
+					</tr>
+					<tr>
+						<td>$(quote pixels)</td>
+						<td>$(quote `uint8_t[w * h]`)</td>
+						<td>Image pixel buffer</td>
+					</tr>
+				</table>
+				$(note `A pixel is an index into the color palette.`)
+
+				$(h1 TFF)
+				<ul>
+					<li><b>T</b>rinity <b>F</b>ont <b>F</b>ile</li>
+					<li>File extension: $(quote .tff)</li>
+					<li>Magic bytes: $(quote TRIF)</li>
+				</ul>
+				<table>
+					$(data-table-header)
+					<tr>
+						<td>$(quote magic)</td>
+						<td>$(quote uint8_t[4])</td>
+						<td>Magic bytes</td>
+					</tr>
+					<tr>
+						<td>$(quote cols)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Number of columns in font's sheet</td>
+					</tr>
+					<tr>
+						<td>$(quote rows)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Number of rows in font's sheet</td>
+					</tr>
+					<tr>
+						<td>$(quote chW)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Character width</td>
+					</tr>
+					<tr>
+						<td>$(quote chH)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Character height</td>
+					</tr>
+					<tr>
+						<td>$(quote spacing)</td>
+						<td>$(quote uint8_t)</td>
+						<td>Spacing between characters</td>
+					</tr>
+					<tr>
+						<td>$(quote sheet)</td>
+						<td>$(quote `uint8_t[ceil(cols * chW * rows * chH / 8)]`)</td>
+						<td>Font sheet buffer</td>
+					</tr>
+				</table>
+				$(note `Each bit in the font sheet buffer represents a pixel (on/off). Unused bits
+				        caused by a remainder in the size calculation's division are ignored.`)
+			</div>
+		$(/section)
+		$(section `Lua`)
+			<div class="content">
+				$(h1 Functions)
+				$(h2 T_Print)
+				<p>$(quote `T_Print(args...)`)</p>
+				<table>
+					$(data-table-header)
+					<tr>
+						<td>$(quote args...)</td>
+						<td>Any</td>
+						<td>Any number of values to print</td>
+					</tr>
+				</table>
+				<p>
+					Debug print into the console.
+				</p>
+
+				$(h2 T_Info)
+				<p>$(quote `T_Info(args...)`)</p>
+				<table>
+					$(data-table-header)
+					<tr>
+						<td>$(quote args...)</td>
+						<td>Any</td>
+						<td>Any number of values to print</td>
+					</tr>
+				</table>
+				<p>
+					Debug print info into the console.
+				</p>
+
+				$(h2 T_Sleep)
+				<p>$(quote `T_Sleep(ms)`)</p>
+				<table>
+					$(data-table-header)
+					<tr>
+						<td>$(quote ms)</td>
+						<td>$(quote int)</td>
+						<td>Number of milliseconds to sleep for.</td>
+					</tr>
+				</table>
+				<p>
+					Stops the current script thread for a given amount of time.
+				</p>
+			</div>
+		$(/section)
+	</main>
+	$(inc footer.ltl.html)
+</body>
+</html>

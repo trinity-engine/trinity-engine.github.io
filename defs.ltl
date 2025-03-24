@@ -1,0 +1,36 @@
+$(strip-ws)
+
+$(our pages (map
+	Home    /
+	Install /install
+	Docs    /docs
+	Media   /media
+	History /history
+))
+
+$(def section title `
+<section class="content-section">
+	<header class="section-header">
+		$(if (= $title ``) <hr> `$(h1 $title)`)
+	</header>
+`)
+$(our /section `</section>`)
+$(def contained-img name `<div class="media-container"><a class="transparent" href="/res/imgs/$(name)" target="_blank"><img src="/res/imgs/$(name)"></a></div>`)
+$(def contained-yt id `<div class="media-container"><iframe allow="fullscreen;" src="https://www.youtube.com/embed/$(id)"></iframe></div>`)
+$(def a content link `<a href="$(link)" target="_blank">$(content)</a>`)
+$(def note content `<p class="note">Note: $(content)</p>`)
+$(def badge name link (if (= $link ``)
+	`<img class="badge" src="/res/badges/$(name)">`
+	`<a class="transparent" href="$(link)" target="_blank"><img class="badge" src="/res/badges/$(name)"></a>`
+))
+$(def title-to-id title (apply $title (split ` `) (join -) (lower)))
+$(def h n title `<h$(int $n) id="$(title-to-id $title)">$(title)</h$(int $n)>`)
+$(def h1 title (h 1 $title))
+$(def h2 title (h 2 $title))
+$(def h3 title (h 3 $title))
+$(def h4 title (h 4 $title))
+$(def ha title `<a href="#$(title-to-id $title)">$(title)</a>`)
+$(def quote content `<span class="quote">$(content)</span>`)
+$(def pre  `$(strip-ws 0)<pre>`)
+$(def /pre `</pre>$(strip-ws)`)
+$(def encode content (replace $content < &lt; > &gt;))

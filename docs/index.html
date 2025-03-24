@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/res/logo.png">
+<link rel="stylesheet" href="/style.css">
+<title>Docs | Trinity</title>
+<meta name="description" content="Trinity Game Engine">
+<meta name="keywords" content="Trinity, retro, game, engine, 2.5D, software, renderer">
+<meta name="theme-color" content="#7b6307">
+<meta property="og:title" content="Docs | Trinity">
+<meta property="og:description" content="Trinity Game Engine">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trinity-engine.github.io">
+<meta property="og:image" content="/res/logo.png">
+</head>
+<body>
+<header id="site-header">
+<img id="site-logo" class="rotate" src="/res/logo.png">
+<h1 id="site-title">TRINITY</h1>
+</header>
+<nav id="site-nav">
+<a class="right" href="https://github.com/trinity-engine" target="_blank">Github</a>
+<ul>
+<li ><a href="/">Home</a></li>
+<li ><a href="/install">Install</a></li>
+<li class="active"><a href="/docs">Docs</a></li>
+<li ><a href="/media">Media</a></li>
+<li ><a href="/history">History</a></li>
+</ul>
+</nav>
+<main id="site-main">
+<section class="content-section">
+<header class="section-header">
+<h1 id="table-of-contents">Table Of Contents</h1>
+</header>
+<div class="content">
+<ul>
+<li>
+<a href="#file-formats">File Formats</a>
+<ul>
+<li>
+<a href="#pal">PAL</a>
+<ul>
+<li><a href="#rgb">RGB</a></li>
+</ul>
+</li>
+<li><a href="#pif">PIF</a></li>
+<li><a href="#tff">TFF</a></li>
+</ul>
+</li>
+<li>
+<a href="#lua">Lua</a>
+<ul>
+<li>
+<a href="#functions">Functions</a>
+<ul>
+<li><a href="#t_print">T_Print</a></li>
+<li><a href="#t_info">T_Info</a></li>
+<li><a href="#t_sleep">T_Sleep</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section class="content-section">
+<header class="section-header">
+<h1 id="file-formats">File Formats</h1>
+</header>
+<div class="content">
+<p class="note">Note: All data is <a href="https://en.wikipedia.org/wiki/Endianness" target="_blank">little-endian</a> and data types are represented with <a href="https://en.wikipedia.org/wiki/C_data_types" target="_blank">C type syntax</a>.</p>
+<h1 id="pal">PAL</h1>
+<ul>
+<li><b>PAL</b>ette</li>
+<li>From the <a href="https://github.com/lordoftrident/pif" target="_blank">PIF library</a></li>
+<li>File extension: <span class="quote">.pal</span></li>
+<li>Magic bytes: <span class="quote">PIFP</span></li>
+</ul>
+<table>
+<tr>
+<td>Name</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td><span class="quote">magic</span></td>
+<td><span class="quote">uint8_t[4]</span></td>
+<td>Magic bytes</td>
+</tr>
+<tr>
+<td><span class="quote">last</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Index of the last color in the palette</td>
+</tr>
+<tr>
+<td><span class="quote">colors</span></td>
+<td><span class="quote">RGB[last + 1]</span></td>
+<td>List of palette colors in RGB format</td>
+</tr>
+</table>
+<h2 id="rgb">RGB</h2>
+<table>
+<tr>
+<td>Name</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td><span class="quote">r</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Red color component</td>
+</tr>
+<tr>
+<td><span class="quote">g</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Green color component</td>
+</tr>
+<tr>
+<td><span class="quote">b</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Blue color component</td>
+</tr>
+</table>
+<h1 id="pif">PIF</h1>
+<ul>
+<li><b>P</b>alettized <b>I</b>mage <b>F</b>ile</li>
+<li>From the <a href="https://github.com/lordoftrident/pif" target="_blank">PIF library</a></li>
+<li>File extension: <span class="quote">.pif</span></li>
+<li>Magic bytes: <span class="quote">PIFI</span></li>
+</ul>
+<table>
+<tr>
+<td>Name</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td><span class="quote">magic</span></td>
+<td><span class="quote">uint8_t[4]</span></td>
+<td>Magic bytes</td>
+</tr>
+<tr>
+<td><span class="quote">w</span></td>
+<td><span class="quote">uint16_t</span></td>
+<td>Width of the image</td>
+</tr>
+<tr>
+<td><span class="quote">h</span></td>
+<td><span class="quote">uint16_t</span></td>
+<td>Height of the image</td>
+</tr>
+<tr>
+<td><span class="quote">pixels</span></td>
+<td><span class="quote">uint8_t[w * h]</span></td>
+<td>Image pixel buffer</td>
+</tr>
+</table>
+<p class="note">Note: A pixel is an index into the color palette.</p>
+<h1 id="tff">TFF</h1>
+<ul>
+<li><b>T</b>rinity <b>F</b>ont <b>F</b>ile</li>
+<li>File extension: <span class="quote">.tff</span></li>
+<li>Magic bytes: <span class="quote">TRIF</span></li>
+</ul>
+<table>
+<tr>
+<td>Name</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td><span class="quote">magic</span></td>
+<td><span class="quote">uint8_t[4]</span></td>
+<td>Magic bytes</td>
+</tr>
+<tr>
+<td><span class="quote">cols</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Number of columns in font's sheet</td>
+</tr>
+<tr>
+<td><span class="quote">rows</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Number of rows in font's sheet</td>
+</tr>
+<tr>
+<td><span class="quote">chW</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Character width</td>
+</tr>
+<tr>
+<td><span class="quote">chH</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Character height</td>
+</tr>
+<tr>
+<td><span class="quote">spacing</span></td>
+<td><span class="quote">uint8_t</span></td>
+<td>Spacing between characters</td>
+</tr>
+<tr>
+<td><span class="quote">sheet</span></td>
+<td><span class="quote">uint8_t[ceil(cols * chW * rows * chH / 8)]</span></td>
+<td>Font sheet buffer</td>
+</tr>
+</table>
+<p class="note">Note: Each bit in the font sheet buffer represents a pixel (on/off). Unused bits
+caused by a remainder in the size calculation's division are ignored.</p>
+</div>
+</section>
+<section class="content-section">
+<header class="section-header">
+<h1 id="lua">Lua</h1>
+</header>
+<div class="content">
+<h1 id="functions">Functions</h1>
+<h2 id="t_print">T_Print</h2>
+<p><span class="quote">T_Print(args...)</span></p>
+<table>
+<tr>
+<td>Name</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td><span class="quote">args...</span></td>
+<td>Any</td>
+<td>Any number of values to print</td>
+</tr>
+</table>
+<p>
+Debug print into the console.
+</p>
+<h2 id="t_info">T_Info</h2>
+<p><span class="quote">T_Info(args...)</span></p>
+<table>
+<tr>
+<td>Name</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td><span class="quote">args...</span></td>
+<td>Any</td>
+<td>Any number of values to print</td>
+</tr>
+</table>
+<p>
+Debug print info into the console.
+</p>
+<h2 id="t_sleep">T_Sleep</h2>
+<p><span class="quote">T_Sleep(ms)</span></p>
+<table>
+<tr>
+<td>Name</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td><span class="quote">ms</span></td>
+<td><span class="quote">int</span></td>
+<td>Number of milliseconds to sleep for.</td>
+</tr>
+</table>
+<p>
+Stops the current script thread for a given amount of time.
+</p>
+</div>
+</section>
+</main>
+<footer id="site-footer">
+<p>Made with love <3</p>
+<p class="small right">Last updated on March 24 2025</p>
+<p>
+See:
+<a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">license (GPL v3)</a>,
+<a href="https://github.com/trinity-engine/trinity-engine.github.io" target="_blank">source code</a>
+</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,166 @@
+$(do (our page History) (imp defs.ltl))
+
+<!DOCTYPE html>
+<html>
+<head>
+	$(inc metadata.ltl.html)
+</head>
+<body>
+	$(inc header.ltl.html)
+	$(inc nav.ltl.html)
+	<main id="site-main">
+		$(section `1st Scrapped Version`)
+			<div class="content">
+				<div class="flex">
+					$(contained-img history/v1a.png)
+					$(contained-img history/v1b.png)
+					$(contained-img history/v1c.png)
+					$(contained-img history/v1d.png)
+				</div>
+				<p>
+					This is the first ever version of Trinity. It wasn't even called Trinity yet. It
+					was basically a simple RGB raycaster with a sky that had an almost-accurate "3D"
+					perspective, ice floor physics, 2D map view, a fake 3D sky floor, and a wall
+					texture camera system. It was just a raycasting test, not yet intended to be an
+					actual game engine. However, it laid the ground for upcoming versions. I even
+					started developing a UI system, which I upgraded in the next version.
+				</p>
+				<details>
+					<summary>See video footage</summary>
+					<div class="flex">
+						$(contained-yt `2uz4u7ByeYc`)
+						$(contained-yt `lckNP4GOYFk`)
+						$(contained-yt `lxGHZrPP12M`)
+					</div>
+					<div class="flex">
+						$(contained-yt `kLJeyB_SNh8`)
+						$(contained-yt `43ywyPJW1K0`)
+					</div>
+				</details>
+			</div>
+		$(/section)
+		$(section `2nd Scrapped Version`)
+			<div class="content">
+				<div class="flex">
+					$(contained-img history/v2a.png)
+					$(contained-img history/v2b.png)
+					$(contained-img history/v2c.png)
+					$(contained-img history/v2d.png)
+				</div>
+				<p>
+					This was probably the funnest version. It was at this point that I decided I
+					want Trinity to be a game engine. I made some basic Valve-inspired placeholder
+					textures, added 45-degree angled walls, and a lightmap system for textures. I
+					also made a map editor inspired by $(a `Hammer Editor` `https://developer.valvesoftware.com/wiki/Valve_Hammer_Editor_(GoldSrc)`)
+					and $(a `Eureka Editor` `https://doomwiki.org/wiki/Eureka`), with UI that
+					blatantly copied colors from the $(a GoldSrc `https://developer.valvesoftware.com/wiki/GoldSrc`)
+					UI - at least temporarily.
+				</p>
+				<details>
+					<summary>See video footage</summary>
+					<div class="flex">
+						$(contained-yt `dzZHHmiNP7I`)
+						$(contained-yt `UIft_fFGnv8`)
+						$(contained-yt `9TQ-hyUoB0Q`)
+					</div>
+					<div class="flex">
+						$(contained-yt `snK8LuanrZc`)
+						$(contained-yt `xkL36Arrr4w`)
+						$(contained-yt `fy8ruMU5j4g`)
+					</div>
+				</details>
+			</div>
+		$(/section)
+		$(section `3rd Scrapped Version`)
+			<div class="content">
+				<div class="flex">
+					$(contained-img history/v3a.png)
+					$(contained-img history/v3b.png)
+					$(contained-img history/v3c.png)
+					$(contained-img history/v3d.png)
+				</div>
+				<p>
+					This was the point when I gave the engine the name "Trinity". It also probably
+					became the most advanced in this version. A mistake of the previous version was
+					that I created a map editor before the engine had all the features I wanted. So,
+					in this version, I decided to add those features first: proper angled walls (not
+					just 45-degree angled), Doom-like ceiling/floor height, sprites, shadowmap and
+					more. However, in the end I only implemented angled walls and height. A
+					Procedural water animation also got added in.
+				</p>
+				<p>
+					To achieve this, I came up with a simple "sector" technique that divides each
+					screen column into segments based on tile floor and ceiling heights.
+					Essentially, it groups together multiple tiles of the same floor/ceiling height
+					into a "sector" and renders it. If a sector's floor is higher than the previous
+					one, a wall is rendered to close the gap. Similarly, if the sector's ceiling is
+					lower than the previous one, a wall is again rendered to close the gap.
+				</p>
+				<p>
+					For angled walls, I used basic line intersection checks between the ray line and
+					the tile's angled wall line to calculate the wall offset for the column.
+				</p>
+				<p>
+					The water animation was inspired by $(a `Quake's wobbly portal texture` `https://quake.fandom.com/wiki/Teleporter_(Q1)?file=Teleport.jpg`)
+					animation. I observed its behavior and attempted to recreate it using a simple
+					sine/cosine combination for both axes.
+				</p>
+				<details>
+					<summary>See video footage</summary>
+					<div class="flex">
+						$(contained-yt `K8hNifd3qWc`)
+						$(contained-yt `kRQ2dFffqsI`)
+						$(contained-yt `DLBjbRbhKPg`)
+					</div>
+				</details>
+			</div>
+		$(/section)
+		$(section `4th Scrapped Version`)
+			<div class="content">
+				<div class="flex relative">
+					$(contained-img history/v4a.png)
+					$(contained-img history/v4b.png)
+					$(contained-img history/v4c.png)
+					$(contained-img history/v4d.png)
+					<div class="logo-overlay">
+						<img class="rotate" src="/res/imgs/history/old-logo.png">
+					</div>
+				</div>
+				<p>
+					In this version, I finally made a logo for Trinity. I wanted something simple
+					and retro-looking, and I was quite satisfied with the result. The engine
+					recieved minor improvements, such as a proper "3D" sky perspective, better
+					rendering quality, performance and texturing - textures no longer got stretched
+					vertically. I also added a cool "3D" water wave effect.
+
+					However, this version had a small downgrade from the previous one - no angled
+					walls. I never got angled walls working properly with height in the previous
+					version, so I scrapped them, and never got around to reimplementing them.
+				</p>
+				<p>
+					I created the "3D" water wave illusion using a sine-wave cutout generated along
+					the edge of water sector. Then, the water floor texture is rendered inside  that
+					shape. However, this causes a small side effect - if you go all the way down to
+					the sector's floor, the waves flatten, because they don't actually have any
+					height.
+				</p>
+				<p>
+					While this engine was perhaps impressive as an advanced raycaster, it was too
+					limited for general game development. That's why I decided to remake Trinity as
+					a Build-style engine - arguably the most flexible type of 2.5D software-rendered
+					engine.
+				</p>
+				<details>
+					<summary>See video footage</summary>
+					<div class="flex">
+						$(contained-yt `vjw4UTkZWP8`)
+						$(contained-yt `RiRPwE8G9Ko`)
+						$(contained-yt `YW5e4bw0VxI`)
+					</div>
+				</details>
+			</div>
+		$(/section)
+	</main>
+	$(inc footer.ltl.html)
+</body>
+</html>

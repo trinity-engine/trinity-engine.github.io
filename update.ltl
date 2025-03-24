@@ -1,0 +1,16 @@
+$(no-output)
+
+$(def update file output (do
+	(my parts (split . $file))
+	(fexpand (join . (cat (slice $parts 0 -2) (list ltl) (slice $parts -2 1))) $file)
+	(echo `Updated $(file)`)
+))
+
+$(imp defs.ltl)
+$(our to-update (cat (each name path $pages
+	`$(if (> (len $path) 1) `$(slice $path 1 -1)/`)index.html`
+) (list
+	`404.html`
+)))
+
+$(each _ file $to-update (update $file))
