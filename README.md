@@ -33,7 +33,7 @@
 </details>
 
 ## Introduction
-The real Trinity website.
+The official Trinity website.
 - `$ go run localhost.go` for localhost
 - `$ ltl -f update.ltl` to re-generate `.html` files from `.ltl.html` files
 
