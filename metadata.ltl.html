@@ -3,7 +3,7 @@ $(# `<meta name="viewport" content="width=device-width, initial-scale=1">`)
 
 <link rel="icon" href="/res/logo.png">
 <link rel="stylesheet" href="/style.css">
-<title>$(page) | Trinity</title>
+<title>$(if (exists page) $page `404`) | Trinity</title>
 
 <meta name="description" content="Trinity Game Engine">
 <meta name="keywords" content="Trinity, retro, game, engine, 2.5D, software, renderer">
