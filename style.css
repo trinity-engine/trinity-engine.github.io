@@ -36,10 +36,14 @@
 	font-family: ibm;
 }
 
+html {
+	font-size: 1rem;
+}
+
 body {
 	color:       var(--color-fg);
 	font-weight: light;
-	font-size:   1em;
+	font-size:   1rem;
 
 	background-color:      #000;
 	background-attachment: fixed;
