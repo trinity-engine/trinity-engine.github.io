@@ -1,22 +1,21 @@
 $(do (our page Docs) (imp defs.ltl))
 
-$(our data-table-header `
-<tr>
-	<td>Name</td>
-	<td>Type</td>
-	<td>Description</td>
-</tr>
-`)
-
-<!DOCTYPE html>
-<html>
+$(html)
 <head>
 	$(inc metadata.ltl.html)
 </head>
-<body>
+$(body)
 	$(inc header.ltl.html)
 	$(inc nav.ltl.html)
 	<main id="site-main">
+		$(our data-table-header `
+		<tr>
+			<td>Name</td>
+			<td>Type</td>
+			<td>Description</td>
+		</tr>
+		`)
+
 		$(section `Table Of Contents`)
 			<div class="content">
 				<ul>
@@ -226,5 +225,5 @@ $(our data-table-header `
 		$(/section)
 	</main>
 	$(inc footer.ltl.html)
-</body>
-</html>
+$(/body)
+$(/html)

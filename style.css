@@ -40,6 +40,7 @@ body {
 	color:       var(--color-fg);
 	font-weight: light;
 
+	background-color:      #000;
 	background-attachment: fixed;
 	background-image:      url("/res/bg.png");
 }

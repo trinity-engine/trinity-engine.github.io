@@ -1,11 +1,10 @@
 $(do (our page Home) (imp defs.ltl))
 
-<!DOCTYPE html>
-<html>
+$(html)
 <head>
 	$(inc metadata.ltl.html)
 </head>
-<body>
+$(body)
 	$(inc header.ltl.html)
 	$(inc nav.ltl.html)
 	<main id="site-main">
@@ -84,5 +83,5 @@ $(do (our page Home) (imp defs.ltl))
 		$(/section)
 	</main>
 	$(inc footer.ltl.html)
-</body>
-</html>
+$(/body)
+$(/html)
