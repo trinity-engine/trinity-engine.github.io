@@ -3,17 +3,17 @@
 	<a href="./LICENSE">
 		<img alt="License" src="https://img.shields.io/badge/license-GPL v3-e8415e?style=for-the-badge">
 	</a>
-	<a href="https://github.com/trinity-engine/trinity.github.io/graphs/contributors">
-		<img alt="Contributors" src="https://img.shields.io/github/contributors/trinity-engine/trinity.github.io?style=for-the-badge&color=f36a3b">
+	<a href="https://github.com/trinity-engine/trinity-engine.github.io/graphs/contributors">
+		<img alt="Contributors" src="https://img.shields.io/github/contributors/trinity-engine/trinity-engine.github.io?style=for-the-badge&color=f36a3b">
 	</a>
-	<a href="https://github.com/trinity-engine/trinity.github.io/stargazers">
-		<img alt="Stars" src="https://img.shields.io/github/stars/trinity-engine/trinity.github.io?style=for-the-badge&color=efb300">
+	<a href="https://github.com/trinity-engine/trinity-engine.github.io/stargazers">
+		<img alt="Stars" src="https://img.shields.io/github/stars/trinity-engine/trinity-engine.github.io?style=for-the-badge&color=efb300">
 	</a>
-	<a href="https://github.com/trinity-engine/trinity.github.io/issues">
-		<img alt="Issues" src="https://img.shields.io/github/issues/trinity-engine/trinity.github.io?style=for-the-badge&color=0fae5e">
+	<a href="https://github.com/trinity-engine/trinity-engine.github.io/issues">
+		<img alt="Issues" src="https://img.shields.io/github/issues/trinity-engine/trinity-engine.github.io?style=for-the-badge&color=0fae5e">
 	</a>
-	<a href="https://github.com/trinity-engine/trinity.github.io/pulls">
-		<img alt="Pull requests" src="https://img.shields.io/github/issues-pr/trinity-engine/trinity.github.io?style=for-the-badge&color=4f79e4">
+	<a href="https://github.com/trinity-engine/trinity-engine.github.io/pulls">
+		<img alt="Pull requests" src="https://img.shields.io/github/issues-pr/trinity-engine/trinity-engine.github.io?style=for-the-badge&color=4f79e4">
 	</a>
 	<br><br><br>
 	<img src="./res/logo.png" width="150px">
@@ -38,7 +38,7 @@ The real Trinity website.
 - `$ ltl -f update.ltl` to re-generate `.html` files from `.ltl.html` files
 
 ## Bugs
-If you find any bugs, please, [create an issue and report them](https://github.com/trinity-engine/trinity.github.io/issues).
+If you find any bugs, please, [create an issue and report them](https://github.com/trinity-engine/trinity-engine.github.io/issues).
 
 <br>
 <h1></h1>
