@@ -2,7 +2,7 @@
 <div align="center">
 	<img src="./res/banner.png" width="550px">
 
-# Trinity
+# Trinity Website
 Website for the Trinity game engine
 
 [License (GPLv3)](./LICENSE) · [Hosted here](https://trinity-engine.pages.gay)
