@@ -1,11 +1,7 @@
 $(strip-ws)
 
 $(our pages (map
-	Home    /
-	Install /install
-	Docs    /docs
-	Media   /media
-	History /history
+	Home /
 ))
 
 $(# `HTML shenanigans for preventing the white flash when loading the page`)

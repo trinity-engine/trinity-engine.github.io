@@ -1,8 +1,0 @@
-<nav id="site-nav">
-	<a class="right" href="https://github.com/trinity-engine" target="_blank">Github</a>
-	<ul>
-		$(each name path $pages (do
-			`<li $(if (= $page $name) class="active")><a href="$(path)">$(name)</a></li>\n`
-		))
-	</ul>
-</nav>
