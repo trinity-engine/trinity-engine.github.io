@@ -1,5 +1,6 @@
 <a name="readme-top"></a>
 <div align="center">
+	<h1>Moved to <a href="https://git.gay/trinity-engine/pages">https://git.gay/trinity-engine/pages</a></h1>
 	<img src="./res/banner.png" width="550px">
 
 # Trinity Website
