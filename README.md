@@ -6,7 +6,7 @@
 # Trinity Website
 Website for the Trinity game engine
 
-[License (GPLv3)](./LICENSE) · [Hosted here](https://trinity-engine.pages.gay)
+[License (GPLv3)](./LICENSE) · [Hosted here](https://trinity-engine.codeberg.page)
 
 </div>
 
